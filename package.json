@@ -1,0 +1,30 @@
+{
+  "name": "airseekr-nft-api",
+  "version": "1.0.0",
+  "description": "Express API server for Airseekr NFT",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/toptal126/airseekr-nft-api.git"
+  },
+  "keywords": [
+    "heroky"
+  ],
+  "author": "toptal126@gmail.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/toptal126/airseekr-nft-api/issues"
+  },
+  "homepage": "https://github.com/toptal126/airseekr-nft-api#readme",
+  "dependencies": {
+    "express": "^4.17.2"
+  },
+  "devDependencies": {
+    "node-fetch": "^2.6.6",
+    "nodemon": "^2.0.15"
+  }
+}
