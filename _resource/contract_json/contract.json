@@ -1,0 +1,8 @@
+{
+  "name": "Airseekr Members",
+  "description": "Airseekr Members are vendors and guests in the future market",
+  "image": "https://airseekr.com/img/webp/homebanner_new.webp",
+  "external_link": "https://airseekr.com",
+  "seller_fee_basis_points": 100,
+  "fee_recipient": "0x86f41Fb061A3706F834665F2003caE43BA491996"
+}

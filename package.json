@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/toptal126/airseekr-nft-api#readme",
   "dependencies": {
+    "dotenv": "^14.3.2",
     "express": "^4.17.2"
   },
   "devDependencies": {

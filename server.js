@@ -1,8 +1,10 @@
+require("dotenv").config();
 const express = require("express");
 const fs = require("fs");
 const path = require("path");
 const app = express();
 const jsonPath = path.join(__dirname, "_resource/token_json");
+const contractJson = require("./_resource/contract_json/contract.json");
 
 // app.use(express.static("_resource/token_json"));
 
@@ -17,6 +19,10 @@ app.get("/api/token/:tokenId", (req, res, next) => {
   } catch (e) {
     res.json({});
   }
+});
+
+app.get("/api/contract", (req, res, next) => {
+  res.json(contractJson);
 });
 
 app.get("*", (req, res) => {
