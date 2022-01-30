@@ -5,8 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon server.js",
-    "start": "node server.js"
+    "start": "node server",
+    "server": "nodemon server",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "repository": {
     "type": "git",
@@ -22,14 +24,21 @@
   },
   "homepage": "https://github.com/toptal126/airseekr-nft-api#readme",
   "dependencies": {
+    "client": "file:client",
     "dotenv": "^14.3.2",
     "express": "^4.17.2"
   },
   "devDependencies": {
+    "concurrently": "^7.0.0",
     "node-fetch": "^2.6.6",
     "nodemon": "^2.0.15"
   },
   "engines": {
     "node": "14.x"
+  },
+  "nodemonConfig": {
+    "ignore": [
+      "./client"
+    ]
   }
 }
