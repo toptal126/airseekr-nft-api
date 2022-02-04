@@ -8,12 +8,19 @@ const NftCard = ({ nftId, clickHandler }) => {
       className="group cursor-pointer fade-in text-sm lg:-20 duration-300"
       onClick={() => clickHandler()}
     >
-      <div className="w-full fade-in lg:group-hover:scale-105 group-hover:shadow-me duration-300 rounded-xl aspect-square overflow-hidden bg-gray-100 shadow-me">
+      <div className="flex flex-col justify-center w-full fade-in lg:group-hover:scale-105 group-hover:shadow-me duration-300 rounded-xl aspect-square overflow-hidden bg-gray-100 shadow-me">
+        {!imageLoaded && (
+          <span className="flex h-1/2 w-1/2 relative m-auto">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75"></span>
+          </span>
+        )}
         {!imageFailed && (
           <img
             src={`https://ikzttp.mypinata.cloud/ipfs/QmYDvPAXtiJg7s8JdRBSLWdgSphQdac8j1YuQNNxcGE1hg/${nftId}.png`}
             alt={`Image for ${nftId}`}
-            className="duration-300 w-full h-full object-center object-cover"
+            className={`duration-300 w-full h-full object-center object-cover ${
+              !imageLoaded && "hidden"
+            }`}
             onLoad={() => {
               setImageLoaded(true);
             }}

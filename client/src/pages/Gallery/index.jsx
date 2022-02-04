@@ -10,15 +10,17 @@ import { ReactComponent as MyItems } from "../../assets/icon/MyItems.svg";
 import { ReactComponent as Shuffle } from "../../assets/icon/Shuffle.svg";
 import { ReactComponent as FilterSvg } from "../../assets/icon/Filter.svg";
 
+import fetch from "node-fetch";
+
 const Gallery = () => {
   const [items, setItems] = useState(Array.from(Array(20).keys()));
   const [hasMore, setHasMore] = useState(true);
-  const [hidden, setHidden] = useState(true);
+  const [hidden, setHidden] = useState(false);
   const [modalShow, setModalShow] = useState(false);
   const [curNft, setCurNft] = useState(0);
 
   useEffect(() => {
-    setTimeout(() => setHidden(false), 1000);
+    // setTimeout(() => setHidden(false), 500);
   }, []);
 
   const fetchMoreData = () => {
@@ -26,18 +28,23 @@ const Gallery = () => {
       setHasMore(false);
       return;
     }
-    // a fake async api call like which sends
-    // 20 more records in .5 secs
     setTimeout(() => {
       const newArray = [];
       Array.from(Array(20).keys()).map((i) => newArray.push(i + items.length));
       setItems(items.concat(newArray));
-    }, 500);
+    }, 0);
   };
   const shuffleItems = () => {
     setHidden(true);
-    setTimeout(() => setHidden(false), 1000);
+    setTimeout(() => setHidden(false), 500);
     setItems(items.sort(() => 0.5 - Math.random()));
+  };
+  const fetchJson = () => {
+    fetch(
+      `https://ikzttp.mypinata.cloud/ipfs/QmQFkLSQysj94s5GvTHPyzTxrawwtjgiiYS2TBLgrvw8CW/${1}`
+    )
+      .then((response) => response.json())
+      .then((data) => console.log(data));
   };
   return (
     <div className="container mx-auto flex">
@@ -55,7 +62,7 @@ const Gallery = () => {
           <div className="flex items-center pb-0">
             <GalleryButton
               text="My Items"
-              clickHandler={() => alert(1)}
+              clickHandler={fetchJson}
               icon={<MyItems />}
             />
             <GalleryButton
@@ -67,7 +74,7 @@ const Gallery = () => {
               text="Filter"
               className="lg:hidden flex hover:opacity-50 py-1 px-2 lg:py-2 lg:px-4 rounded bg-slate-200 dark:bg-gray-900"
               textClassName="uppercase pt-0.5 pl-2 "
-              clickHandler={() => alert("Filter")}
+              clickHandler={fetchJson}
               icon={<FilterSvg />}
             />
           </div>

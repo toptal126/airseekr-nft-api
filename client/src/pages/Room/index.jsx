@@ -14,6 +14,7 @@ const Room = () => {
   const [status, setStatus] = useState("");
 
   useEffect(async () => {
+    console.log("Room");
     const { address, status } = await getCurrentWalletConnected();
     setWallet(address);
   }, []);

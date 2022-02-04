@@ -1,11 +1,17 @@
 require("dotenv").config();
 const express = require("express");
+const bodyParser = require("body-parser");
 const fs = require("fs");
 const path = require("path");
 const app = express();
 const jsonPath = path.join(__dirname, "_resource/token_json");
 const contractJson = require("./_resource/contract_json/contract.json");
 
+app.use(
+  bodyParser.urlencoded({
+    extended: true,
+  })
+);
 // app.use(express.static("_resource/token_json"));
 
 app.get("/api/token/:tokenId", (req, res, next) => {
@@ -23,6 +29,10 @@ app.get("/api/token/:tokenId", (req, res, next) => {
 
 app.get("/api/contract", (req, res, next) => {
   res.json(contractJson);
+});
+
+app.post("/tokenJson", (req, res, next) => {
+  res.json(req.body);
 });
 
 app.get("*", (req, res) => {

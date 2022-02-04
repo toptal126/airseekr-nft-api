@@ -7,7 +7,6 @@ export default function NftInfoModal({ show, nftId, setModalShow }) {
   const cancelButtonRef = useRef(null);
   const [nftMetadata, setNftMetadata] = useState({});
   useEffect(() => {
-    // console.log(nftId);
     setNftMetadata({});
     fetch(
       `https://ikzttp.mypinata.cloud/ipfs/QmQFkLSQysj94s5GvTHPyzTxrawwtjgiiYS2TBLgrvw8CW/${nftId}`
@@ -16,7 +15,7 @@ export default function NftInfoModal({ show, nftId, setModalShow }) {
       .then((data) => setNftMetadata(data));
   }, [nftId]);
   return (
-    Object.keys(nftMetadata).length && (
+    Object.keys(nftMetadata).length != 0 && (
       <Transition.Root show={show} as={Fragment}>
         <Dialog
           as="div"
@@ -82,7 +81,7 @@ export default function NftInfoModal({ show, nftId, setModalShow }) {
                         </svg>
                       </a>
                     </div>
-                    <ul className="pt-2 max-w-xl lg:grid-cols-2 gap-3 lg:grid hidden tracking-wider">
+                    <ul className="pt-2 w-full grid-cols-2 gap-3 grid tracking-wider">
                       {nftMetadata.attributes.map((trait, index) => (
                         <li
                           key={index}
@@ -103,143 +102,6 @@ export default function NftInfoModal({ show, nftId, setModalShow }) {
                         </li>
                       ))}
                     </ul>
-                    <div className="overflow-hidden lg:hidden block">
-                      <div>
-                        <div
-                          className="flex space-x-2 "
-                          style={{ transform: "translate3d(50%, 0px, 0px)" }}
-                        >
-                          <div className="embla__slidegallery text-xs items-center py-2 px-3 flex rounded bg-white bg-opacity-10 w-full border-black">
-                            <img
-                              className="w-8 pr-2"
-                              src="/filtericons/Black/Type.png"
-                            />
-                            <div>
-                              <p className="flex items-center uppercase opacity-60  text-2xs tracking-wider mr-auto inline-block">
-                                <span className="pt-px">Type:</span>
-                              </p>
-                              <p className="ml-auto text-xs font-600 uppercase">
-                                Human
-                              </p>
-                            </div>
-                          </div>
-                          <div className="embla__slidegallery text-xs items-center py-2 px-3 flex rounded bg-white bg-opacity-10 w-full border-black">
-                            <img
-                              className="w-8 pr-2"
-                              src="/filtericons/Black/Hair.png"
-                            />
-                            <div>
-                              <p className="flex items-center uppercase opacity-60  text-2xs tracking-wider mr-auto inline-block">
-                                <span className="pt-px">Hair:</span>
-                              </p>
-                              <p className="ml-auto text-xs font-600 uppercase">
-                                Brown Ponytail
-                              </p>
-                            </div>
-                          </div>
-                          <div className="embla__slidegallery text-xs items-center py-2 px-3 flex rounded bg-white bg-opacity-10 w-full border-black">
-                            <img
-                              className="w-8 pr-2"
-                              src="/filtericons/Black/Clothing.png"
-                            />
-                            <div>
-                              <p className="flex items-center uppercase opacity-60  text-2xs tracking-wider mr-auto inline-block">
-                                <span className="pt-px">Clothing:</span>
-                              </p>
-                              <p className="ml-auto text-xs font-600 uppercase">
-                                Light Kimono
-                              </p>
-                            </div>
-                          </div>
-                          <div className="embla__slidegallery text-xs items-center py-2 px-3 flex rounded bg-white bg-opacity-10 w-full border-black">
-                            <img
-                              className="w-8 pr-2"
-                              src="/filtericons/Black/Eyes.png"
-                            />
-                            <div>
-                              <p className="flex items-center uppercase opacity-60  text-2xs tracking-wider mr-auto inline-block">
-                                <span className="pt-px">Eyes:</span>
-                              </p>
-                              <p className="ml-auto text-xs font-600 uppercase">
-                                Concerned
-                              </p>
-                            </div>
-                          </div>
-                          <div className="embla__slidegallery text-xs items-center py-2 px-3 flex rounded bg-white bg-opacity-10 w-full border-black">
-                            <img
-                              className="w-8 pr-2"
-                              src="/filtericons/Black/Mouth.png"
-                            />
-                            <div>
-                              <p className="flex items-center uppercase opacity-60  text-2xs tracking-wider mr-auto inline-block">
-                                <span className="pt-px">Mouth:</span>
-                              </p>
-                              <p className="ml-auto text-xs font-600 uppercase">
-                                Tongue Out
-                              </p>
-                            </div>
-                          </div>
-                          <div className="embla__slidegallery text-xs items-center py-2 px-3 flex rounded bg-white bg-opacity-10 w-full border-black">
-                            <img
-                              className="w-8 pr-2"
-                              src="/filtericons/Black/Offhand.png"
-                            />
-                            <div>
-                              <p className="flex items-center uppercase opacity-60  text-2xs tracking-wider mr-auto inline-block">
-                                <span className="pt-px">Offhand:</span>
-                              </p>
-                              <p className="ml-auto text-xs font-600 uppercase">
-                                Golden Bean
-                              </p>
-                            </div>
-                          </div>
-                          <div className="embla__slidegallery text-xs items-center py-2 px-3 flex rounded bg-white bg-opacity-10 w-full border-black">
-                            <img
-                              className="w-8 pr-2"
-                              src="/filtericons/Black/Background.png"
-                            />
-                            <div>
-                              <p className="flex items-center uppercase opacity-60  text-2xs tracking-wider mr-auto inline-block">
-                                <span className="pt-px">Background:</span>
-                              </p>
-                              <p className="ml-auto text-xs font-600 uppercase">
-                                Off White D
-                              </p>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="lg:hidden flex mt-4 space-x-1 mx-auto">
-                      <button
-                        className="h-px w-4 bg-black opacity-100"
-                        type="button"
-                      ></button>
-                      <button
-                        className="h-px w-4 bg-black opacity-40"
-                        type="button"
-                      ></button>
-                      <button
-                        className="h-px w-4 bg-black opacity-40"
-                        type="button"
-                      ></button>
-                      <button
-                        className="h-px w-4 bg-black opacity-40"
-                        type="button"
-                      ></button>
-                      <button
-                        className="h-px w-4 bg-black opacity-40"
-                        type="button"
-                      ></button>
-                      <button
-                        className="h-px w-4 bg-black opacity-40"
-                        type="button"
-                      ></button>
-                      <button
-                        className="h-px w-4 bg-black opacity-40"
-                        type="button"
-                      ></button>
-                    </div>
                   </div>
                 </div>
               </div>

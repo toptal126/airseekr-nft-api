@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server",
+    "start": "npm run dev",
     "server": "nodemon server",
     "client": "npm start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\""
@@ -38,7 +38,8 @@
   },
   "nodemonConfig": {
     "ignore": [
-      "./client"
+      "./client",
+      "./token_json"
     ]
   }
 }
