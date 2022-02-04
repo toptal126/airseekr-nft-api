@@ -1,0 +1,95 @@
+/* ./src/index.css */
+
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Zen+Kurenaido&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@layer base {
+  h1 {
+    @apply text-5xl font-black tracking-widest;
+  }
+  h2 {
+    @apply text-xl;
+  }
+  h3 {
+    @apply text-lg;
+  }
+
+  .goldentext {
+    background: linear-gradient(-45deg, #ffd580, #f0a925, #ffe56f, #f6b547);
+    background-size: 200% 200%;
+    -webkit-animation: gradient 2s linear infinite;
+    animation: gradient 2s linear infinite;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    @apply tracking-widest;
+  }
+
+  .bluetext {
+    background: linear-gradient(-45deg, #b180ff, #8e25f0, #4e0eff, #1c0099);
+    background-size: 200% 200%;
+    -webkit-animation: gradient 2s linear infinite;
+    animation: gradient 2s linear infinite;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    @apply tracking-widest;
+  }
+}
+
+html {
+  font-size: 14px;
+}
+body {
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* @apply bg-gradient-to-r from-pink-400 to-pink-300 dark:bg-gradient-to-r dark:from-zinc-900  dark:to-stone-900 bg-pink-400 dark:bg-stone-900; */
+  @apply bg-pink-400 dark:bg-zinc-900;
+}
+.header {
+  @apply font-sans tracking-widest;
+}
+.container {
+  @apply font-container tracking-widest font-medium;
+}
+.footer {
+  @apply font-container tracking-widest font-medium pt-10 pb-5;
+  border-color: #fff2;
+  background-color: rgba(255, 255, 255, 0.025);
+}
+div {
+  @apply text-black dark:text-white;
+}
+
+button {
+  @apply hover:bg-opacity-60 duration-300;
+}
+
+.animate-banner {
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(-5%);
+    animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+  }
+  50% {
+    transform: translateY(0);
+    animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  }
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0 50%;
+  }
+}
