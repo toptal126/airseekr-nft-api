@@ -1,9 +1,14 @@
 require("dotenv").config();
 const express = require("express");
+const serveStatic = require("serve-static");
 const bodyParser = require("body-parser");
 const fs = require("fs");
 const path = require("path");
 const app = express();
+
+//here we are configuring dist to serve app files
+app.use("/", serveStatic(path.join(__dirname, "/client/build")));
+
 const jsonPath = path.join(__dirname, "_resource/token_json");
 const contractJson = require("./_resource/contract_json/contract.json");
 
@@ -35,8 +40,13 @@ app.post("/tokenJson", (req, res, next) => {
   res.json(req.body);
 });
 
-app.get("*", (req, res) => {
-  res.json({});
+// app.get("*", (req, res) => {
+//   res.json({});
+// });
+
+// this * route is to serve project on different page routes except root `/`
+app.get(/.*/, function (req, res) {
+  res.sendFile(path.join(__dirname, "/client/build/index.html"));
 });
 
 const port = process.env.PORT || 80;

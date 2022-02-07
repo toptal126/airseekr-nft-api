@@ -76,6 +76,9 @@ button {
   animation: bounce 2s infinite;
 }
 
+.infinite-scroll-component {
+  overflow: visible !important;
+}
 @keyframes bounce {
   0%,
   100% {
