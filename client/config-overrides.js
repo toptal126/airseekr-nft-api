@@ -5,9 +5,9 @@ module.exports = function override(config, env) {
     fs: false,
     tls: false,
     net: false,
-    http: require.resolve("stream-http"),
+    // http: require.resolve("stream-http"),
     https: false,
-    zlib: require.resolve("browserify-zlib"),
+    // zlib: require.resolve("browserify-zlib"),
     os: false,
     path: require.resolve("path-browserify"),
     stream: require.resolve("stream-browserify"),
@@ -15,6 +15,6 @@ module.exports = function override(config, env) {
     util: require.resolve("util/"),
     crypto: require.resolve("crypto-browserify"),
   };
-
+  config.ignoreWarnings = [/Failed to parse source map/];
   return config;
 };
