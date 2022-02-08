@@ -6,6 +6,7 @@ module.exports = function override(config, env) {
     fs: false,
     tls: false,
     net: false,
+    http: false,
     // http: require.resolve("stream-http"),
     https: false,
     // zlib: require.resolve("browserify-zlib"),
