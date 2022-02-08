@@ -36,8 +36,9 @@ const Gallery = () => {
   };
   const shuffleItems = () => {
     setHidden(true);
-    setTimeout(() => setHidden(false), 500);
     setItems(items.sort(() => 0.5 - Math.random()));
+    setTimeout(() => setHidden(false), 10);
+    // setHidden(false);
   };
   const fetchJson = () => {
     fetch(

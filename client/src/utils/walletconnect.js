@@ -83,12 +83,16 @@ export const getCurrentWalletConnected = async () => {
   }
 };
 export const requestSwitchNetwork = async (chainId) => {
-  await window.ethereum.request({
-    method: "wallet_switchEthereumChain",
-    params: [
-      {
-        chainId: chainId,
-      },
-    ],
-  });
+  try {
+    await window.ethereum.request({
+      method: "wallet_switchEthereumChain",
+      params: [
+        {
+          chainId: chainId,
+        },
+      ],
+    });
+  } catch (error) {
+    if (error.code === 4001) console.log(error.message);
+  }
 };

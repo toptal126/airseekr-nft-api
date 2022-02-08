@@ -1,3 +1,3 @@
-const auzuki_abi = require("./azuki_ABI.json");
+require("dotenv").config();
 
-export const contractABI = auzuki_abi;
+export const contractABI = require("./azuki_ABI.json");

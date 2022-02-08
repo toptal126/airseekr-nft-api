@@ -15,11 +15,10 @@ import { ReactComponent as Metamask } from "../../assets/icon/Metamask.svg";
 const Room = () => {
   const [value, setValue] = useState(0); // integer state
   const [walletAddress, setWallet] = useState("");
-  const [status, setStatus] = useState("");
+  //   const [status, setStatus] = useState("");
 
   useEffect(async () => {
-    console.log("Room");
-    const { address, status } = await getCurrentWalletConnected();
+    const { address } = await getCurrentWalletConnected();
     setWallet(address);
   }, []);
 
@@ -39,7 +38,7 @@ const Room = () => {
 
   const connectWalletPressed = async () => {
     const walletResponse = await connectWallet();
-    setStatus(walletResponse.status);
+    // setStatus(walletResponse.status);
     setWallet(walletResponse.address);
   };
   return (
@@ -52,7 +51,7 @@ const Room = () => {
           <button
             className={
               "relative mb-10 mx-auto py-2 px-10 text-2xl rounded-full text-white focus:ring-2 " +
-              (walletAddress.length == 0 ||
+              (walletAddress.length === 0 ||
               !getChain(window.ethereum.chainId).valid
                 ? "bg-red-500 focus:ring-red-500"
                 : "bg-emerald-500 focus:ring-emerald-500")
@@ -84,7 +83,7 @@ const Room = () => {
             clickHandler={() => {
               window.open(
                 "https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn",
-                "_blank" // <- This is what makes it open in a new window.
+                "_blank"
               );
             }}
             icon={<Metamask className="w-32 h-32" />}
