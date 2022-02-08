@@ -1,7 +1,5 @@
 import { useEffect, useState } from "react";
 
-import { createAlchemyWeb3 } from "@alch/alchemy-web3";
-
 import WalletButton from "../../components/WalletButton";
 
 import {
@@ -13,7 +11,7 @@ import {
 import { getChain } from "../../utils/chainList";
 
 import { ReactComponent as Metamask } from "../../assets/icon/Metamask.svg";
-
+import { alchemy_web3 } from "../../config/contants";
 const Room = () => {
   const [value, setValue] = useState(0); // integer state
   const [walletAddress, setWallet] = useState("");

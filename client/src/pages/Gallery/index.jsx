@@ -11,6 +11,7 @@ import { ReactComponent as Shuffle } from "../../assets/icon/Shuffle.svg";
 import { ReactComponent as FilterSvg } from "../../assets/icon/Filter.svg";
 
 import fetch from "node-fetch";
+import { alchemy_web3 } from "../../config/contants";
 
 const Gallery = () => {
   const [items, setItems] = useState(Array.from(Array(20).keys()));
@@ -41,11 +42,9 @@ const Gallery = () => {
     // setHidden(false);
   };
   const fetchJson = () => {
-    fetch(
-      `https://ikzttp.mypinata.cloud/ipfs/QmQFkLSQysj94s5GvTHPyzTxrawwtjgiiYS2TBLgrvw8CW/${1}`
-    )
-      .then((response) => response.json())
-      .then((data) => console.log(data));
+    alchemy_web3.eth.getBlock("latest").then((block) => {
+      console.log(block);
+    });
   };
   return (
     <div className="container mx-auto flex">

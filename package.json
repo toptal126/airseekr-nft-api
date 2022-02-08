@@ -25,9 +25,15 @@
   },
   "homepage": "https://github.com/toptal126/airseekr-nft-api#readme",
   "dependencies": {
+    "assert": "^2.0.0",
     "client": "file:client",
     "dotenv": "^14.3.2",
-    "express": "^4.17.2"
+    "express": "^4.17.2",
+    "https-browserify": "^1.0.0",
+    "os-browserify": "^0.3.0",
+    "stream-browserify": "^3.0.0",
+    "stream-http": "^3.2.0",
+    "url": "^0.11.0"
   },
   "devDependencies": {
     "concurrently": "^7.0.0",
