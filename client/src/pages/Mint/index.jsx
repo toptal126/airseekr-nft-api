@@ -1,12 +1,12 @@
 import { NavLink } from "react-router-dom";
 import BannerImage from "../../assets/banner.png";
-const Home = () => {
+const Mint = () => {
   return (
     <div className="container mx-auto flex flex-col pt-10">
       <div className="w-full flex flex-col md:flex-row">
         <div className="w-full">
           <div className="p-5">
-            <h1>Discover Collect And Sell NFT Assets</h1>
+            <h1>Mint Your Unique ONE!</h1>
             <p className="text-2xl pt-5">
               Digital Marketplace For Crypto Collectibles And Non-Fungible
               Tokens. Buy, Sell, And Discover Exclusive Digital Assets.
@@ -37,4 +37,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Mint;

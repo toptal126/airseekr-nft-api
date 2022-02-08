@@ -6,6 +6,10 @@ export const PAGE_LINKS = [
     link: "/",
   },
   {
+    text: "Mint",
+    link: "/mint",
+  },
+  {
     text: "Gallery",
     link: "/gallery",
   },

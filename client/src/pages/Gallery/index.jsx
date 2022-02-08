@@ -41,10 +41,12 @@ const Gallery = () => {
     setTimeout(() => setHidden(false), 10);
     // setHidden(false);
   };
-  const fetchJson = () => {
-    alchemy_web3.eth.getBlock("latest").then((block) => {
-      console.log(block);
-    });
+  const fetchJson = async () => {
+    const accounts = await alchemy_web3.eth.getAccounts();
+    if (accounts[0] === undefined) {
+      alert("Please connect metamask");
+      return;
+    }
   };
   return (
     <div className="container mx-auto flex">

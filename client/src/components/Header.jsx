@@ -9,7 +9,7 @@ const Header = () => {
         <div className="flex-grow">
           <div className="flex">
             <NavLink className="w-min-content" to="/">
-              <img className="h-20 p-2 rounded" src={LOGO_WEBP} />
+              <img className="app-logo h-20 p-2 rounded" src={LOGO_WEBP} />
             </NavLink>
           </div>
         </div>

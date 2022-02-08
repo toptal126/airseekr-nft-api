@@ -4,6 +4,7 @@ import Expenses from "../routes/expenses";
 import Invoices from "../routes/invoices";
 import Invoice from "../routes/invoice";
 import Home from "../pages/Home";
+import Mint from "../pages/Mint";
 import Room from "../pages/Room";
 import Gallery from "../pages/Gallery";
 
@@ -12,6 +13,7 @@ const Routers = (props) => {
     /* <Alert /> */
     <Routes>
       <Route path="/" element={<Home />}></Route>
+      <Route path="/mint" element={<Mint />}></Route>
       <Route path="/room" element={<Room />}></Route>
       <Route path="/gallery" element={<Gallery />}></Route>
       <Route path="invoices" element={<Invoices />}>

@@ -49,6 +49,28 @@
     -o-animation: fadeIn 0.7s ease-in-out;
     -ms-animation: fadeIn 0.7s ease-in-out;
   }
+
+  .round-button {
+    @apply py-2 px-10 text-2xl rounded-full text-white focus:ring-2;
+  }
+
+  .app-logo:hover,
+  .app-logo:focus {
+    filter: brightness(1.05) drop-shadow(0 0.1rem 0.15rem var(--color-purple));
+    transform: rotate(-3deg) scale(1.075);
+    transition: 0.2s, transform 0.25s cubic-bezier(0.2, 4, 0.66, 1);
+  }
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #731a0b;
+    border-radius: 5px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #181b21;
+  }
 }
 
 html {
