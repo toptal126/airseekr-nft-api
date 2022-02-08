@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom";
 import BannerImage from "../../assets/banner.png";
 const Home = () => {
   return (
-    <div className="container mx-auto flex flex-col pt-10">
+    <div className="container mx-auto flex flex-col pt-10 fade-in">
       <div className="w-full flex flex-col md:flex-row">
         <div className="w-full">
           <div className="p-5">

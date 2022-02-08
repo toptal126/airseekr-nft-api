@@ -1,5 +1,3 @@
-import { createAlchemyWeb3 } from "@alch/alchemy-web3";
-
 export const PAGE_LINKS = [
   {
     text: "Home",
@@ -59,4 +57,4 @@ export const ALCHEMY_URL =
 export const ALCHEMY_WS_URL =
   "wss://eth-rinkeby.ws.alchemyapi.io/ws/GVk1Bj0Az_4igUYW8syP7APSSJwI6GeP";
 
-export const alchemy_web3 = createAlchemyWeb3(ALCHEMY_WS_URL);
+export const contractAddress = "0x0922Cf6a626A35f1D403338cf58e35ff3eB249A0";

@@ -22,7 +22,7 @@ const ColorThemeToggler = () => {
     <button
       id="theme-toggle"
       type="button"
-      className="fixed bottom-0 text-white bg-black dark:bg-white dark:text-black hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 text-sm p-2.5"
+      className="fixed bottom-0 text-black dark:text-white hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 text-sm p-2.5"
       onClick={toggleTheme}
     >
       <svg

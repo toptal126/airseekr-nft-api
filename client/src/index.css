@@ -81,7 +81,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   /* @apply bg-gradient-to-r from-pink-400 to-pink-300 dark:bg-gradient-to-r dark:from-zinc-900  dark:to-stone-900 bg-pink-400 dark:bg-stone-900; */
-  @apply bg-pink-400 dark:bg-zinc-900;
+  @apply bg-lime-50 dark:bg-zinc-900;
 }
 .header {
   @apply font-sans tracking-widest;
@@ -90,8 +90,8 @@ body {
   @apply font-container tracking-widest font-medium;
 }
 .footer {
-  @apply font-container tracking-widest font-medium pt-10 pb-5;
-  border-color: #fff2;
+  @apply font-container tracking-widest font-medium pt-10 pb-5 border-t border-opacity-20 border-zinc-900 dark:border-zinc-600;
+
   background-color: rgba(255, 255, 255, 0.025);
 }
 div {
@@ -109,6 +109,12 @@ button {
 .infinite-scroll-component {
   overflow: visible !important;
 }
+
+.web3modal-provider-name,
+.web3modal-provider-description {
+  color: black !important;
+}
+
 @keyframes bounce {
   0%,
   100% {

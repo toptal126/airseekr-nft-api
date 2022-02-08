@@ -10,6 +10,7 @@
     "@testing-library/jest-dom": "^5.16.1",
     "@testing-library/react": "^12.1.2",
     "@testing-library/user-event": "^13.5.0",
+    "@walletconnect/web3-provider": "^1.7.1",
     "dotenv": "^16.0.0",
     "react": "^17.0.2",
     "react-app-rewired": "^2.1.11",
@@ -19,7 +20,8 @@
     "react-router-dom": "^6.2.1",
     "react-scripts": "5.0.0",
     "react-tsparticles": "^1.39.2",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "web3modal": "^1.9.5"
   },
   "scripts": {
     "start": "react-app-rewired start",

@@ -1,8 +1,23 @@
+import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
+
+import { getCurrentWalletConnected } from "../../utils/interactWeb3";
+
 import BannerImage from "../../assets/banner.png";
+
 const Mint = () => {
+  const [walletAddress, setWallet] = useState("");
+  useEffect(async () => {
+    const { address, chainId } = await getCurrentWalletConnected();
+    setWallet(address);
+  }, []);
+
+  const onMintPressed = () => {
+    alert(walletAddress);
+  };
+
   return (
-    <div className="container mx-auto flex flex-col pt-10">
+    <div className="container mx-auto flex flex-col pt-10 fade-in">
       <div className="w-full flex flex-col md:flex-row">
         <div className="w-full">
           <div className="p-5">
@@ -12,18 +27,12 @@ const Mint = () => {
               Tokens. Buy, Sell, And Discover Exclusive Digital Assets.
             </p>
             <div className="flex pt-5 gap-x-5">
-              <NavLink
-                to="/mint"
+              <button
                 className="round-button bg-emerald-700 focus:ring-emerald-500"
+                onClick={onMintPressed}
               >
                 Mint
-              </NavLink>
-              <NavLink
-                to="/gallery"
-                className="round-button bg-indigo-700 focus:ring-indigo-500"
-              >
-                Explore
-              </NavLink>
+              </button>
             </div>
           </div>
         </div>

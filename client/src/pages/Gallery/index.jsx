@@ -10,9 +10,10 @@ import { ReactComponent as MyItems } from "../../assets/icon/MyItems.svg";
 import { ReactComponent as Shuffle } from "../../assets/icon/Shuffle.svg";
 import { ReactComponent as FilterSvg } from "../../assets/icon/Filter.svg";
 
-import fetch from "node-fetch";
-import { alchemy_web3 } from "../../config/contants";
-
+import {
+  getMyTokens,
+  getCurrentWalletConnected,
+} from "../../utils/interactWeb3";
 const Gallery = () => {
   const [items, setItems] = useState(Array.from(Array(20).keys()));
   const [hasMore, setHasMore] = useState(true);
@@ -21,7 +22,7 @@ const Gallery = () => {
   const [curNft, setCurNft] = useState(0);
 
   useEffect(() => {
-    // setTimeout(() => setHidden(false), 500);
+    getCurrentWalletConnected();
   }, []);
 
   const fetchMoreData = () => {
@@ -37,16 +38,22 @@ const Gallery = () => {
   };
   const shuffleItems = () => {
     setHidden(true);
-    setItems(items.sort(() => 0.5 - Math.random()));
+    const _items = items.sort(() => 0.5 - Math.random());
+    setItems(_items);
     setTimeout(() => setHidden(false), 10);
     // setHidden(false);
   };
   const fetchJson = async () => {
-    const accounts = await alchemy_web3.eth.getAccounts();
-    if (accounts[0] === undefined) {
-      alert("Please connect metamask");
-      return;
-    }
+    let { tokens, status } = await getMyTokens();
+    tokens = tokens.map(function (item) {
+      return parseInt(item);
+    });
+    if (status === false) return;
+
+    setHidden(true);
+    setHasMore(false);
+    setItems(tokens);
+    setTimeout(() => setHidden(false), 10);
   };
   return (
     <div className="container mx-auto flex">
