@@ -3,4 +3,10 @@ module.exports = {
     tailwindcss: {},
     autoprefixer: {},
   },
-}
+
+  theme: {
+    fontFamily: {
+      sans: ['"Zen Kurenaido"'],
+    },
+  },
+};

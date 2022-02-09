@@ -1,0 +1,58 @@
+<svg
+  xml:space="preserve"
+  viewBox="0 0 100 100"
+  y="0"
+  x="0"
+  xmlns="http://www.w3.org/2000/svg"
+  version="1.1"
+  width="200px"
+  height="200px"
+>
+  <g
+    class="ldl-scale"
+    style="transform-origin: 50% 50%; transform: rotate(0deg) scale(0.8, 0.8)"
+  >
+    <g class="ldl-ani">
+      <g class="ldl-layer">
+        <g
+          class="ldl-ani"
+          style="
+            transform-origin: 50px 50px;
+            transform: matrix(0.01, 0, 0, 0.01, 0, 0);
+            animation: 1.11111s linear 0.1s 1 normal forwards running
+              bounce-in
+          "
+        >
+          <path
+            fill="#333"
+            d="M45.5 8.2l-29.4 17c-2.8 1.6-4.5 4.6-4.5 7.8v34c0 3.2 1.7 6.2 4.5 7.8l29.4 17c2.8 1.6 6.2 1.6 9 0l29.4-17c2.8-1.6 4.5-4.6 4.5-7.8V33c0-3.2-1.7-6.2-4.5-7.8l-29.4-17c-2.8-1.6-6.2-1.6-9 0z"
+            style="fill: rgb(59, 67, 104)"
+          ></path>
+        </g>
+      </g>
+      <g class="ldl-layer">
+        <g class="ldl-ani">
+          <g>
+            <g class="ldl-layer">
+              <g
+                class="ldl-ani"
+                style="
+                  transform-origin: 50px 50px;
+                  transform: matrix(0.01, 0, 0, 0.01, 0, 0);
+                  animation: 1.11111s linear 0s 1 normal forwards running
+                    bounce-in
+                "
+              >
+                <path
+                  d="M44.8 71.8L22.5 49.5l7.2-7.2 15.1 15.1L70.3 32l7.2 7.2z"
+                  fill="#abbd81"
+                  style="fill: rgb(147, 219, 233)"
+                ></path>
+              </g>
+            </g>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

@@ -17,7 +17,7 @@ const NftCard = ({ nftId, clickHandler }) => {
         {!imageFailed && (
           <img
             src={`https://ikzttp.mypinata.cloud/ipfs/QmYDvPAXtiJg7s8JdRBSLWdgSphQdac8j1YuQNNxcGE1hg/${nftId}.png`}
-            alt={`Image for ${nftId}`}
+            alt={`Airseekr #${nftId}`}
             className={`duration-300 w-full h-full object-center object-cover ${
               !imageLoaded && "hidden"
             }`}

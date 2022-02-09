@@ -176,9 +176,13 @@ export const requestMint = async (quantity, price) => {
         .send({ from: accounts[0], value: price * quantity });
       status = true;
       message = "Successfully minted!";
+      console.log(data);
     } catch (error) {
       status = false;
-      message = error.message;
+      message = "Something wrong!";
+      if (error?.code === 4001) {
+        message = error?.message;
+      }
     }
   }
   return { data, status, message };

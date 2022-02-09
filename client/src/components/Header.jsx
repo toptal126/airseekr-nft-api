@@ -4,12 +4,16 @@ import { PAGE_LINKS, LOGO_WEBP } from "../config/contants";
 
 const Header = () => {
   return (
-    <div className="fixed w-full top-0 lg:px-8 px-5 lg:pt-8 pt-5 z-10 header border-b border-zinc-400 dark:border-slate-800 bg-opacity-30 backdrop-filter backdrop-blur-lg">
+    <div className="fixed w-full top-0 lg:px-8 px-5 py-5 z-10 header border-b border-zinc-400 dark:border-slate-800 bg-opacity-30 backdrop-filter backdrop-blur-lg">
       <div className="flex h-full items-center justify-center max-w-11xl mx-auto">
         <div className="flex-grow">
           <div className="flex">
             <NavLink className="w-min-content" to="/">
-              <img className="app-logo h-20 p-2 rounded" src={LOGO_WEBP} />
+              <img
+                className="app-logo h-20 p-2 rounded"
+                src={LOGO_WEBP}
+                alt="logo"
+              />
             </NavLink>
           </div>
         </div>
@@ -36,6 +40,7 @@ const Header = () => {
             <li>
               <a
                 target="_blank"
+                rel="noreferrer"
                 href="https://twitter.com/azukizen"
                 className="bg-black dark:bg-white bg-opacity-20 dark:bg-opacity-20 hover:bg-opacity-70 dark:hover:bg-opacity-70 text-black hover:text-white dark:text-white items-center relative h-7 items-center pt-0.5 first::pt-0 duration-1000 uppercase text-2xs padding-huge duration-200 items-center px-4 rounded flex justify-center flex-row"
               >

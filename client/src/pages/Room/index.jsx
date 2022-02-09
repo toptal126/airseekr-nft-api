@@ -8,6 +8,7 @@ import {
   requestSwitchNetwork,
 } from "../../utils/interactWeb3";
 
+import { useStore } from "../../utils/store";
 import { getChain } from "../../utils/chainList";
 
 import { ReactComponent as LoadingBricks } from "../../assets/icon/LoadingBricks.svg";
@@ -16,13 +17,22 @@ import { ReactComponent as WalletConnect } from "../../assets/icon/WalletConnect
 
 const Room = () => {
   const [loading, setLoading] = useState(true);
+  const web3Util = useStore((state) => state.web3Util);
+  const setWeb3Util = useStore((state) => state.setWeb3Util);
   const [walletAddress, setWallet] = useState("");
-  const [chainId, setChainId] = useState("");
+  //   const [chainId, setChainId] = useState("");
 
-  useEffect(async () => {
-    const { address, chainId } = await getCurrentWalletConnected();
-    setLoading(false);
-    setWallet(address);
+  useEffect(() => {
+    if (web3Util.status === false) {
+      getCurrentWalletConnected().then((data) => {
+        setWeb3Util(data);
+        setLoading(false);
+        setWallet(data.address);
+      });
+    } else {
+      setLoading(false);
+      setWallet(web3Util.address);
+    }
   }, []);
 
   const connectWalletPressed = async () => {

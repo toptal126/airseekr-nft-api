@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-
+import { notify, walletConnectNotify } from "../../utils/toast";
 import {
   getCurrentWalletConnected,
   getSaleStatus,
@@ -8,10 +8,10 @@ import {
 } from "../../utils/interactWeb3";
 
 import {
-  SALE_NONE,
+  //   SALE_NONE,
   SALE_PRESALE,
   SALE_PUBLICSALE,
-  SALE_ENDED,
+  //   SALE_ENDED,
   MAXIMUM_PRESALE_MINTABLE,
   MAXIMUM_PUBLICSALE_MINTABLE,
 } from "../../config/contants";
@@ -20,6 +20,10 @@ import { useStore } from "../../utils/store";
 import BannerImage from "../../assets/banner.png";
 import { ReactComponent as LoadingGear } from "../../assets/icon/LoadingGear.svg";
 import { ReactComponent as LoadingDNA } from "../../assets/icon/LoadingDNA.svg";
+import { ReactComponent as BounceCheck } from "../../assets/icon/BounceCheck.svg";
+import { ReactComponent as BounceFail } from "../../assets/icon/BounceFail.svg";
+import { ReactComponent as BounceInfo } from "../../assets/icon/BounceInfo.svg";
+import { ReactComponent as BounceFactory } from "../../assets/icon/BounceFactory.svg";
 
 const Mint = () => {
   const [loading, setLoading] = useState(true);
@@ -51,20 +55,44 @@ const Mint = () => {
       setTxLoading(true);
       if (saleStatus.saleStage === SALE_PRESALE) {
         const data = await checkIfBlackList();
-        if (data.status === true && data.isBlackList === false) {
+        if (data.status === false) {
+          // provider error
+          walletConnectNotify();
+        } else if (data.isBlackList === false) {
           const response = await requestMint(mintQuantity, saleStatus.price);
-          alert(response.message);
+          notify(
+            response.status ? "success" : "error",
+            response.status ? (
+              <BounceCheck className="w-16 h-16" />
+            ) : (
+              <BounceFail className="w-16 h-16" />
+            ),
+            "Something Wrong!",
+            response.message
+          );
         } else {
-          alert(data.message);
+          notify(
+            "info",
+            <BounceInfo className="w-16 h-16" />,
+            "😢 You can't mint more!",
+            "You have already bought items. Don't worry you can mint more at public sale!"
+          );
         }
       } else if (saleStatus.saleStage === SALE_PUBLICSALE) {
         const response = await requestMint(mintQuantity, saleStatus.price);
-        alert(response.message);
+        console.log(response);
       } else {
-        alert(saleStatus.message);
+        notify(
+          "info",
+          <BounceInfo className="w-16 h-16" />,
+          "😢 Sale is not open!",
+          "Don't worry you can mint more at public sale!"
+        );
       }
       setTxLoading(false);
-    } else alert(web3Util.status);
+    } else {
+      walletConnectNotify();
+    }
   };
 
   const setQuantity = (_mintQuantity) => {
@@ -129,8 +157,8 @@ const Mint = () => {
           </div>
         </div>
         <div className="w-full">
-          <div className="p-5">
-            <img className="animate-banner" src={BannerImage} />
+          <div className="p-0 lg:p-5">
+            <BounceFactory className="m-auto h-96 w-96" />
           </div>
         </div>
       </div>

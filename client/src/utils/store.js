@@ -1,11 +1,6 @@
 import create from "zustand";
 
-import {
-  SALE_NONE,
-  SALE_PRESALE,
-  SALE_PUBLICSALE,
-  SALE_ENDED,
-} from "../config/contants";
+import { SALE_NONE } from "../config/contants";
 
 export const useStore = create((set) => ({
   myTokens: [],
