@@ -44,16 +44,18 @@ const Gallery = () => {
     // setHidden(false);
   };
   const fetchJson = async () => {
+    setHidden(true);
     let { tokens, status } = await getMyTokens();
     tokens = tokens.map(function (item) {
       return parseInt(item);
     });
-    if (status === false) return;
+    setTimeout(() => setHidden(false), 10);
+    if (status === false) {
+      return;
+    }
 
-    setHidden(true);
     setHasMore(false);
     setItems(tokens);
-    setTimeout(() => setHidden(false), 10);
   };
   return (
     <div className="container mx-auto flex">

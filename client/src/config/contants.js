@@ -58,3 +58,8 @@ export const ALCHEMY_WS_URL =
   "wss://eth-rinkeby.ws.alchemyapi.io/ws/GVk1Bj0Az_4igUYW8syP7APSSJwI6GeP";
 
 export const contractAddress = "0x0922Cf6a626A35f1D403338cf58e35ff3eB249A0";
+
+export const SALE_NONE = "SALE_NONE";
+export const SALE_PRESALE = "SALE_PRESALE";
+export const SALE_PUBLICSALE = "SALE_PUBLICSALE";
+export const SALE_ENDED = "SALE_ENDED";

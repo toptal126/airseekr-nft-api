@@ -1,15 +1,24 @@
 import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 
-import { getCurrentWalletConnected } from "../../utils/interactWeb3";
+import {
+  getCurrentWalletConnected,
+  getSaleStatus,
+} from "../../utils/interactWeb3";
 
 import BannerImage from "../../assets/banner.png";
 
 const Mint = () => {
   const [walletAddress, setWallet] = useState("");
+  const [saleStatus, setSaleStatus] = useState({});
+  const [saleActive, setSaleActive] = useState(false);
   useEffect(async () => {
     const { address, chainId } = await getCurrentWalletConnected();
     setWallet(address);
+    getSaleStatus().then((data) => {
+      setSaleStatus(data);
+      console.log(data);
+    });
   }, []);
 
   const onMintPressed = () => {
