@@ -21,7 +21,8 @@
     "react-scripts": "5.0.0",
     "react-tsparticles": "^1.39.2",
     "web-vitals": "^2.1.4",
-    "web3modal": "^1.9.5"
+    "web3modal": "^1.9.5",
+    "zustand": "^3.6.9"
   },
   "scripts": {
     "start": "react-app-rewired start",

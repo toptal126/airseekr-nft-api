@@ -54,6 +54,10 @@
     @apply py-2 px-10 text-2xl rounded-full text-white focus:ring-2;
   }
 
+  .counter-button {
+    @apply inline-flex items-center justify-center w-10 h-10 mr-2 transition-colors duration-150 rounded-lg hover:bg-emerald-300 my-auto;
+  }
+
   .app-logo:hover,
   .app-logo:focus {
     filter: brightness(1.05) drop-shadow(0 0.1rem 0.15rem var(--color-purple));
@@ -81,7 +85,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   /* @apply bg-gradient-to-r from-pink-400 to-pink-300 dark:bg-gradient-to-r dark:from-zinc-900  dark:to-stone-900 bg-pink-400 dark:bg-stone-900; */
-  @apply bg-lime-50 dark:bg-zinc-900;
+  @apply bg-red-300 dark:bg-zinc-900;
 }
 .header {
   @apply font-sans tracking-widest;
@@ -115,6 +119,15 @@ button {
   color: black !important;
 }
 
+@keyframes loading-spin {
+  0% {
+    animation-timing-function: cubic-bezier(0.5856, 0.0703, 0.4143, 0.9297);
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
 @keyframes bounce {
   0%,
   100% {

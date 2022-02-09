@@ -44,22 +44,30 @@ export const initialize = async () => {
 
 export const connectWallet = async () => {
   try {
-    if (provider !== undefined) return { address: accounts[0], chainId };
+    if (provider !== undefined)
+      return { address: accounts[0], chainId, status: true };
     await initialize();
-    return { address: accounts[0], chainId };
+    return { address: accounts[0], chainId, status: true };
   } catch {
-    return { address: "", chainId: undefined };
+    return { address: "", chainId: undefined, status: false };
   }
 };
 export const getCurrentWalletConnected = async () => {
+  let address = "";
+  let status = false;
   if (provider === undefined) {
     if (web3Modal.cachedProvider.trim().length !== 0) {
       await initialize();
-      return { address: accounts[0], chainId };
+      address = accounts[0];
+      status = true;
     } else {
-      return { address: "", chainId: undefined };
+      address = "";
     }
-  } else return { address: accounts[0], chainId };
+  } else {
+    address = accounts[0];
+    status = true;
+  }
+  return { address, chainId, status };
 };
 export const requestSwitchNetwork = async (chainId) => {
   try {
@@ -86,25 +94,16 @@ export const getSaleStatus = async () => {
   let message = "Please connect wallet";
   let saleStage = SALE_NONE;
   let price = 0;
-  if (provider === undefined) {
-    if (web3Modal.cachedProvider.trim().length !== 0) {
-      await initialize();
-      isPaused = await contract.methods.isPaused().call();
-      pre_price = await contract.methods.pre_price().call();
-      presale = await contract.methods.presale().call();
-      public_price = await contract.methods.public_price().call();
-      publicsale = await contract.methods.publicsale().call();
-      status = true;
-    }
-  } else {
-    if (contract !== undefined) {
-      isPaused = await contract.methods.isPaused().call();
-      pre_price = await contract.methods.pre_price().call();
-      presale = await contract.methods.presale().call();
-      public_price = await contract.methods.public_price().call();
-      publicsale = await contract.methods.publicsale().call();
-      status = true;
-    }
+  if (provider === undefined && web3Modal.cachedProvider.trim().length !== 0) {
+    await initialize();
+  }
+  if (contract !== undefined) {
+    isPaused = await contract.methods.isPaused().call();
+    pre_price = await contract.methods.pre_price().call();
+    presale = await contract.methods.presale().call();
+    public_price = await contract.methods.public_price().call();
+    publicsale = await contract.methods.publicsale().call();
+    status = true;
   }
   if (isPaused === true) {
     saleStage = SALE_ENDED;
@@ -117,7 +116,7 @@ export const getSaleStatus = async () => {
       message = "The presale is open now!";
     } else if (publicsale === true) {
       saleStage = SALE_PUBLICSALE;
-      price = pre_price;
+      price = public_price;
       message = "The public sale is open now!";
     } else {
       saleStage = SALE_NONE;
@@ -126,28 +125,61 @@ export const getSaleStatus = async () => {
     }
   }
   return {
-    status: true,
-    message: message,
-    saleStage: saleStage,
-    price: price,
+    status,
+    message,
+    saleStage,
+    price,
   };
 };
 
 export const getMyTokens = async () => {
-  if (provider === undefined) {
-    if (web3Modal.cachedProvider.trim().length !== 0) {
-      await initialize();
-      const tokens = await contract.methods.tokensOfOwner(accounts[0]).call();
-      return { tokens: tokens, status: true };
-    } else {
-      return { tokens: [], status: false, message: "Please connect wallet" };
-    }
-  } else {
-    if (contract !== undefined)
-      return {
-        tokens: await contract.methods.tokensOfOwner(accounts[0]).call(),
-        status: true,
-      };
+  let tokens = [];
+  let status = false;
+  let message = "Please connect wallet";
+  if (provider === undefined && web3Modal.cachedProvider.trim().length !== 0) {
+    await initialize();
   }
-  return { tokens: [], status: false, message: "Please connect wallet" };
+  if (contract !== undefined) {
+    tokens = await contract.methods.tokensOfOwner(accounts[0]).call();
+    status = true;
+    message = "";
+  }
+  return { tokens, status, message };
+};
+
+export const checkIfBlackList = async () => {
+  let isBlackList = false;
+  let status = false;
+  let message = "Please connect wallet";
+  if (provider === undefined && web3Modal.cachedProvider.trim().length !== 0) {
+    await initialize();
+  }
+  if (contract !== undefined) {
+    isBlackList = await contract.methods.isBlackList(accounts[0]).call();
+    status = true;
+    message = `The Address ${accounts[0]} already minted at presale. You can buy at public sale or Opensea.io !`;
+  }
+  return { isBlackList, status, message };
+};
+
+export const requestMint = async (quantity, price) => {
+  let data = undefined;
+  let status = false;
+  let message = "Please connect wallet";
+  if (provider === undefined && web3Modal.cachedProvider.trim().length !== 0) {
+    await initialize();
+  }
+  if (contract !== undefined) {
+    try {
+      data = await contract.methods
+        .mint(accounts[0], quantity)
+        .send({ from: accounts[0], value: price * quantity });
+      status = true;
+      message = "Successfully minted!";
+    } catch (error) {
+      status = false;
+      message = error.message;
+    }
+  }
+  return { data, status, message };
 };

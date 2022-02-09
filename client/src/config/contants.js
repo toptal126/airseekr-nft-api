@@ -17,7 +17,7 @@ export const PAGE_LINKS = [
   },
   {
     text: "Updates",
-    link: "/invoices",
+    link: "/updates",
   },
   {
     text: "About US",
@@ -63,3 +63,6 @@ export const SALE_NONE = "SALE_NONE";
 export const SALE_PRESALE = "SALE_PRESALE";
 export const SALE_PUBLICSALE = "SALE_PUBLICSALE";
 export const SALE_ENDED = "SALE_ENDED";
+
+export const MAXIMUM_PRESALE_MINTABLE = 3;
+export const MAXIMUM_PUBLICSALE_MINTABLE = 5;

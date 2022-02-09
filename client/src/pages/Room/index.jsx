@@ -18,7 +18,6 @@ const Room = () => {
   const [loading, setLoading] = useState(true);
   const [walletAddress, setWallet] = useState("");
   const [chainId, setChainId] = useState("");
-  //   const [status, setStatus] = useState("");
 
   useEffect(async () => {
     const { address, chainId } = await getCurrentWalletConnected();

@@ -16,7 +16,7 @@ const Routers = (props) => {
       <Route path="/mint" element={<Mint />}></Route>
       <Route path="/room" element={<Room />}></Route>
       <Route path="/gallery" element={<Gallery />}></Route>
-      <Route path="invoices" element={<Invoices />}>
+      {/* <Route path="invoices" element={<Invoices />}>
         <Route
           index
           element={
@@ -26,7 +26,7 @@ const Routers = (props) => {
           }
         ></Route>
         <Route path=":invoiceId" element={<Invoice />}></Route>
-      </Route>
+      </Route> */}
       <Route path="expenses" element={<Expenses />}></Route>
       {/* <PrivateRoute exact path="/dashboard" component={Dashboard} /> */}
       {/* <Route component={NotFound} /> */}
