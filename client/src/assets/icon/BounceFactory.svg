@@ -21,7 +21,7 @@
             transform-origin: 50px 50px;
             transform: matrix(1, 0, 0, 1, 0, 0);
             animation: 1.11111s linear -0.740741s infinite normal forwards running
-              bounce;
+              bounce-bump;
           "
         >
           <g>
@@ -112,7 +112,7 @@
             transform-origin: 50px 50px;
             transform: matrix(1, 0, 0, 1, 0, 0);
             animation: 1.11111s linear -0.925926s infinite normal forwards running
-              bounce;
+              bounce-bump;
           "
         >
           <path
@@ -129,7 +129,7 @@
             transform-origin: 50px 50px;
             transform: matrix(1, 0, 0, 1, 0, 0);
             animation: 1.11111s linear -1.11111s infinite normal forwards running
-              bounce;
+              bounce-bump;
           "
         >
           <g>

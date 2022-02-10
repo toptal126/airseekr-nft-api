@@ -105,7 +105,7 @@
     @apply bg-gradient-to-r from-purple-500/50 dark:from-purple-500/10 to-white/5;
   }
   .toast-wrapper.toast-info .toast-title {
-    @apply text-fuchsia-800 dark:text-fuchsia-600 tracking-wider font-black uppercase;
+    @apply text-fuchsia-800 dark:text-fuchsia-400 tracking-wider font-black uppercase;
   }
 
   html {
@@ -353,7 +353,7 @@
       opacity: 1;
     }
   }
-  @keyframes bounce {
+  @keyframes bounce-bump {
     0% {
       animation-timing-function: cubic-bezier(0.1361, 0.2514, 0.2175, 0.8786);
       transform: translate(0, 0px) scaleY(1);

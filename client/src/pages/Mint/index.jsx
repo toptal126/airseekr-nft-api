@@ -67,7 +67,7 @@ const Mint = () => {
             ) : (
               <BounceFail className="w-16 h-16" />
             ),
-            "Something Wrong!",
+            response.status ? "Great!" : "Something Wrong!",
             response.message
           );
         } else {
@@ -80,13 +80,22 @@ const Mint = () => {
         }
       } else if (saleStatus.saleStage === SALE_PUBLICSALE) {
         const response = await requestMint(mintQuantity, saleStatus.price);
-        console.log(response);
+        notify(
+          response.status ? "success" : "error",
+          response.status ? (
+            <BounceCheck className="w-16 h-16" />
+          ) : (
+            <BounceFail className="w-16 h-16" />
+          ),
+          response.status ? "Great!" : "Something Wrong!",
+          response.message
+        );
       } else {
         notify(
           "info",
           <BounceInfo className="w-16 h-16" />,
           "😢 Sale is not open!",
-          "Don't worry you can mint more at public sale!"
+          "Don't worry, You can mint more at public sale!"
         );
       }
       setTxLoading(false);
