@@ -23,7 +23,7 @@
     animation: gradient 2s linear infinite;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    @apply tracking-widest;
+    @apply tracking-widest font-black;
   }
 
   .bluetext {
@@ -33,7 +33,7 @@
     animation: gradient 2s linear infinite;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    @apply tracking-widest;
+    @apply tracking-widest font-black;
   }
 
   .shadow-me {
@@ -116,7 +116,7 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     /* @apply bg-gradient-to-r from-pink-400 to-pink-300 dark:bg-gradient-to-r dark:from-zinc-900  dark:to-stone-900 bg-pink-400 dark:bg-stone-900; */
-    @apply bg-red-300 dark:bg-zinc-900;
+    @apply bg-[#ebdbb2] dark:bg-zinc-900;
     font-family: "Source Sans Pro", sans-serif;
   }
   .header {

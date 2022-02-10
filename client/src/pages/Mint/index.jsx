@@ -17,7 +17,6 @@ import {
 } from "../../config/contants";
 
 import { useStore } from "../../utils/store";
-import BannerImage from "../../assets/banner.png";
 import { ReactComponent as LoadingGear } from "../../assets/icon/LoadingGear.svg";
 import { ReactComponent as LoadingDNA } from "../../assets/icon/LoadingDNA.svg";
 import { ReactComponent as BounceCheck } from "../../assets/icon/BounceCheck.svg";
@@ -34,6 +33,9 @@ const Mint = () => {
   const setWeb3Util = useStore((state) => state.setWeb3Util);
   const mintQuantity = useStore((state) => state.mintQuantity);
   const setMintQuantity = useStore((state) => state.setMintQuantity);
+  const setMyTokens = useStore((state) => state.setMyTokens);
+  const setItems = useStore((state) => state.setItems);
+
   useEffect(() => {
     if (web3Util.status === false) {
       getCurrentWalletConnected().then((data) => {
@@ -50,6 +52,20 @@ const Mint = () => {
     }
   }, []);
 
+  const notifyMintResponse = (response) => {
+    notify(
+      response.status ? "success" : "error",
+      response.status ? (
+        <BounceCheck className="w-16 h-16" />
+      ) : (
+        <BounceFail className="w-16 h-16" />
+      ),
+      response.status ? "Great!" : "Something Wrong!",
+      response.message
+    );
+    if (response.status) setMyTokens([]) && setItems([]);
+  };
+
   const onMintPressed = async () => {
     if (web3Util.status === true) {
       setTxLoading(true);
@@ -60,16 +76,7 @@ const Mint = () => {
           walletConnectNotify();
         } else if (data.isBlackList === false) {
           const response = await requestMint(mintQuantity, saleStatus.price);
-          notify(
-            response.status ? "success" : "error",
-            response.status ? (
-              <BounceCheck className="w-16 h-16" />
-            ) : (
-              <BounceFail className="w-16 h-16" />
-            ),
-            response.status ? "Great!" : "Something Wrong!",
-            response.message
-          );
+          notifyMintResponse(response);
         } else {
           notify(
             "info",
@@ -80,16 +87,7 @@ const Mint = () => {
         }
       } else if (saleStatus.saleStage === SALE_PUBLICSALE) {
         const response = await requestMint(mintQuantity, saleStatus.price);
-        notify(
-          response.status ? "success" : "error",
-          response.status ? (
-            <BounceCheck className="w-16 h-16" />
-          ) : (
-            <BounceFail className="w-16 h-16" />
-          ),
-          response.status ? "Great!" : "Something Wrong!",
-          response.message
-        );
+        notifyMintResponse(response);
       } else {
         notify(
           "info",
@@ -134,7 +132,7 @@ const Mint = () => {
                 </p>
                 {txLoading && <LoadingDNA className="w-64 h-64 m-auto" />}
                 {!txLoading && (
-                  <div className="flex h-64 gap-x-10">
+                  <div className="flex mt-5 gap-x-10">
                     <button
                       className="round-button bg-emerald-700 focus:ring-emerald-500 my-auto"
                       onClick={onMintPressed}

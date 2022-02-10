@@ -3,10 +3,27 @@ import create from "zustand";
 import { SALE_NONE } from "../config/contants";
 
 export const useStore = create((set) => ({
-  myTokens: [],
-  clearMyTokens: () => set({ myTokens: [] }),
-  items: [],
-  setItems: (_items) => set({ items: _items }),
+  galleryData: {
+    totalSupply: 0,
+    items: [],
+    myTokens: [],
+  },
+  setMyTokens: (_myTokens) =>
+    set((state) => ({
+      ...state,
+      galleryData: { ...state.galleryData, myTokens: _myTokens },
+    })),
+  setItems: (_items) =>
+    set((state) => ({
+      ...state,
+      galleryData: { ...state.galleryData, items: _items },
+    })),
+  setTotalSupply: (_totalSupply) =>
+    set((state) => ({
+      ...state,
+      galleryData: { ...state.galleryData, totalSupply: _totalSupply },
+    })),
+  setGalleryData: (_galleryData) => set({ galleryData: _galleryData }),
   web3Util: {
     address: "",
     chainId: undefined,

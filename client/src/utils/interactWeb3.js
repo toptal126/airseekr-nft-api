@@ -147,6 +147,21 @@ export const getMyTokens = async () => {
   return { tokens, status, message };
 };
 
+export const getTotalSupply = async () => {
+  let totalSupply = 0;
+  let status = false;
+  let message = "Please connect wallet";
+  if (provider === undefined && web3Modal.cachedProvider.trim().length !== 0) {
+    await initialize();
+  }
+  if (contract !== undefined) {
+    totalSupply = parseInt(await contract.methods.totalSupply().call());
+    status = true;
+    message = "";
+  }
+  return { totalSupply, status, message };
+};
+
 export const checkIfBlackList = async () => {
   let isBlackList = false;
   let status = false;
