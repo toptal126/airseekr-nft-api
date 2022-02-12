@@ -6,6 +6,7 @@ import GalleryButton from "../../components/GalleryButton";
 import Filter from "./Components/Filter";
 import NftCard from "../../components/NftCard";
 import NftInfoModal from "../../components/NftInfoModal";
+import { notify, walletConnectNotify } from "../../utils/toast";
 
 import { ReactComponent as MyItems } from "../../assets/icon/MyItems.svg";
 import { ReactComponent as Shuffle } from "../../assets/icon/Shuffle.svg";
@@ -83,7 +84,8 @@ const Gallery = () => {
     if (galleryData.myTokens.length === 0) {
       let { tokens, status } = await getMyTokens();
       if (status === false) {
-        console.log(86);
+        setHidden(false);
+        walletConnectNotify();
         return;
       }
       tokens = tokens.map(function (item) {
@@ -107,7 +109,7 @@ const Gallery = () => {
           <h1 className="lg:text-4xl text-lg uppercase font-extrabold tracking-tight">
             <span className="dark:goldentext bluetext">
               {`Items // ${
-                (curPage ? galleryData.items : galleryData.myTokens).length
+                curPage ? galleryData.totalSupply : galleryData.myTokens.length
               }`}
             </span>
           </h1>

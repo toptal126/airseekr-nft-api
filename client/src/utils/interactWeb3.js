@@ -26,6 +26,7 @@ const web3Modal = new Web3Modal({
   network: "mainnet", // optional
   cacheProvider: true, // optional
   providerOptions, // required
+  theme: "dark",
 });
 
 let provider = undefined;
@@ -94,6 +95,16 @@ export const getSaleStatus = async () => {
   let message = "Please connect wallet";
   let saleStage = SALE_NONE;
   let price = 0;
+
+  if (provider === undefined && web3Modal.cachedProvider.trim().length === 0) {
+    web3 = createAlchemyWeb3(ALCHEMY_WS_URL);
+    let _contract = new web3.eth.Contract(contractABI, contractAddress);
+    isPaused = await _contract.methods.isPaused().call();
+    pre_price = await _contract.methods.pre_price().call();
+    presale = await _contract.methods.presale().call();
+    public_price = await _contract.methods.public_price().call();
+    publicsale = await _contract.methods.publicsale().call();
+  }
   if (provider === undefined && web3Modal.cachedProvider.trim().length !== 0) {
     await initialize();
   }
@@ -151,6 +162,14 @@ export const getTotalSupply = async () => {
   let totalSupply = 0;
   let status = false;
   let message = "Please connect wallet";
+  if (provider === undefined && web3Modal.cachedProvider.trim().length === 0) {
+    web3 = createAlchemyWeb3(ALCHEMY_WS_URL);
+    let _contract = new web3.eth.Contract(contractABI, contractAddress);
+    totalSupply = parseInt(await _contract.methods.totalSupply().call());
+    status = true;
+    message = "";
+    return { totalSupply, status, message };
+  }
   if (provider === undefined && web3Modal.cachedProvider.trim().length !== 0) {
     await initialize();
   }
