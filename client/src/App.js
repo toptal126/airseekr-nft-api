@@ -21,7 +21,7 @@ function App() {
   return (
     <>
       <Header />
-      <div className="w-full pt-32">
+      <div className="w-full pt-[7.5rem] root-container">
         <Toaster position="top-center" reverseOrder={false} />
         <Routers />
         <Footer />

@@ -1,27 +1,27 @@
 export const PAGE_LINKS = [
   {
-    text: "Home",
+    text: "🏠Home",
     link: "/",
   },
   {
-    text: "Mint",
+    text: "⛏️Mint",
     link: "/mint",
   },
   {
-    text: "Gallery",
+    text: "⚔️Arena",
+    link: "/arena",
+  },
+  {
+    text: "🖼️Gallery",
     link: "/gallery",
   },
   {
-    text: "My Room",
-    link: "/room",
-  },
-  {
-    text: "Updates",
+    text: "📢Updates",
     link: "/updates",
   },
   {
-    text: "About US",
-    link: "/",
+    text: "👑About US",
+    link: "/about",
   },
 ];
 

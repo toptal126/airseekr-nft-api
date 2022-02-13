@@ -14,7 +14,7 @@ const Routers = (props) => {
     <Routes>
       <Route path="/" element={<Home />}></Route>
       <Route path="/mint" element={<Mint />}></Route>
-      <Route path="/room" element={<Room />}></Route>
+      <Route path="/arena" element={<Room />}></Route>
       <Route path="/gallery" element={<Gallery />}></Route>
       {/* <Route path="invoices" element={<Invoices />}>
         <Route

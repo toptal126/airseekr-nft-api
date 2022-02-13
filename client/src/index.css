@@ -379,3 +379,7 @@
 .web3modal-provider-description {
   color: black !important;
 } */
+
+.root-container > .container {
+  min-height: calc(100vh - 15.25rem - 1px);
+}

@@ -2,12 +2,25 @@ import { NavLink } from "react-router-dom";
 
 import { PAGE_LINKS, LOGO_WEBP } from "../config/contants";
 
+import { ReactComponent as MenuOpen } from "../assets/icon/MenuOpen.svg";
+import { useState } from "react";
+import { useEffect } from "react";
+
 const Header = () => {
+  const [menuShown, setMenuShown] = useState(false);
+  useEffect(() => {
+    window.innerWidth > 1024 && setMenuShown(true);
+  }, []);
+
+  const linkChanged = () => {
+    window.innerWidth <= 1024 && setMenuShown(false);
+  };
+
   return (
     <div className="fixed w-full top-0 lg:px-8 px-5 py-5 z-10 header border-b border-zinc-400 dark:border-slate-800 bg-opacity-30 backdrop-filter backdrop-blur-lg">
-      <div className="flex h-full items-center justify-center max-w-11xl mx-auto">
-        <div className="flex-grow">
-          <div className="flex">
+      <div className="flex h-full lg:items-center justify-center max-w-11xl mx-auto">
+        <div className="flex-grow relative z-10">
+          <div className="flex justify-between">
             <NavLink className="w-min-content" to="/">
               <img
                 className="app-logo h-20 p-2 rounded"
@@ -15,15 +28,25 @@ const Header = () => {
                 alt="logo"
               />
             </NavLink>
+            <MenuOpen
+              className="my-auto w-8 h-8 fill-red-500 cursor-pointer lg:hidden hover:fill-red-800 dark:hover:fill-red-300 transition-all duration-500"
+              onClick={() => setMenuShown(!menuShown)}
+            />
           </div>
         </div>
-        <div className="items-center hidden lg:flex">
-          <ul className="flex space-x-2">
+        <div className="items-center flex absolute lg:relative right-0 lg:right-[unset]">
+          <ul
+            className={
+              (!menuShown ? "hidden" : "") +
+              " flex flex-col lg:flex-row lg:space-x-2  min-w-[100vw] lg:min-w-[unset] left-0 mt-[6.25rem] lg:mt-[unset] fade-in"
+            }
+          >
             {PAGE_LINKS.map((link, index) => (
               <li key={index}>
                 <NavLink
+                  onClick={() => linkChanged()}
                   to={link.link}
-                  className="bg-black dark:bg-white bg-opacity-20 dark:bg-opacity-20 hover:bg-opacity-70 dark:hover:bg-opacity-70 text-black hover:text-white dark:text-white h-7 uppercase duration-200 px-4 rounded flex justify-center flex-row"
+                  className="bg-gray-400 dark:bg-black dark:bg-gray-800 dark:lg:bg-white lg:bg-opacity-20 dark:lg:bg-opacity-20 dark:hover:bg-opacity-70 dark:hover:lg:bg-opacity-70 text-black dark:text-white h-12 lg:h-7 leading-[3rem] lg:leading-[unset] uppercase duration-200 px-4 lg:rounded flex justify-center flex-row text-2xl lg:text-base"
                 >
                   {link.text}
                 </NavLink>

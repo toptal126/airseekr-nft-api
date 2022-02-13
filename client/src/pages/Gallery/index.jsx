@@ -105,7 +105,7 @@ const Gallery = () => {
       />
       <Filter />
       <div className="lg:w-3/4 lg:px-8 w-full lg:pt-0 pt-16">
-        <div className="top-28 mt-2 lg:top-0 lg:mt-0 lg:bg-transparent left-0 px-6 pt-26 lg:pt-0 duration-300 lg:px-0 fixed w-full lg:relative z-5 flex items-end justify-between h-14  lg:pb-4 pb-3 border-b border-opacity-10 border-white bg-black">
+        <div className="top-[7.5rem] lg:top-0 lg:mt-0 left-0 px-6 duration-300 lg:px-0 fixed w-full lg:relative z-5 flex items-end justify-between h-14 lg:h-20  lg:pb-4 pb-3 border-b border-opacity-10 border-white backdrop-filter backdrop-blur-lg">
           <h1 className="lg:text-4xl text-lg uppercase font-extrabold tracking-tight">
             <span className="dark:goldentext bluetext">
               {`Items // ${
