@@ -34,6 +34,7 @@ app.get("/api/token/:tokenId", (req, res, next) => {
 
 app.get("/api/contract", (req, res, next) => {
   res.json(contractJson);
+  //   res.json({ test: process.env.REACT_APP_API_URL });
 });
 
 app.post("/tokenJson", (req, res, next) => {

@@ -14,8 +14,8 @@ import { getChain } from "../../utils/chainList";
 import { ReactComponent as LoadingBricks } from "../../assets/icon/LoadingBricks.svg";
 import { ReactComponent as Metamask } from "../../assets/icon/Metamask.svg";
 import { ReactComponent as WalletConnect } from "../../assets/icon/WalletConnect.svg";
-
-const Room = () => {
+console.log(process.env);
+const Arena = () => {
   const [loading, setLoading] = useState(true);
   const web3Util = useStore((state) => state.web3Util);
   const setWeb3Util = useStore((state) => state.setWeb3Util);
@@ -110,4 +110,4 @@ const Room = () => {
   );
 };
 
-export default Room;
+export default Arena;

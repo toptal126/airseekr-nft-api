@@ -5,16 +5,16 @@ import Invoices from "../routes/invoices";
 import Invoice from "../routes/invoice";
 import Home from "../pages/Home";
 import Mint from "../pages/Mint";
-import Room from "../pages/Room";
+import Arena from "../pages/Arena";
 import Gallery from "../pages/Gallery";
 
 const Routers = (props) => {
   return (
     /* <Alert /> */
     <Routes>
-      <Route path="/" element={<Home />}></Route>
-      <Route path="/mint" element={<Mint />}></Route>
-      <Route path="/arena" element={<Room />}></Route>
+      <Route exact path="/" element={<Home />}></Route>
+      <Route exact path="/mint" element={<Mint />}></Route>
+      <Route path="/arena" element={<Arena />}></Route>
       <Route path="/gallery" element={<Gallery />}></Route>
       {/* <Route path="invoices" element={<Invoices />}>
         <Route
