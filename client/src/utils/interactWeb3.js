@@ -35,6 +35,14 @@ let accounts = [];
 let chainId = undefined;
 let contract = undefined;
 
+export const subscribeEvent = async (eventHandler) => {
+  const _web3 = await createAlchemyWeb3(ALCHEMY_WS_URL);
+  const _contract = new _web3.eth.Contract(contractABI, contractAddress);
+  _contract.events.allEvents({}, (error, event) => {
+    eventHandler(event);
+  });
+};
+
 export const initialize = async () => {
   provider = await web3Modal.connect();
   web3 = createAlchemyWeb3(ALCHEMY_WS_URL, { writeProvider: provider });
@@ -56,17 +64,21 @@ export const connectWallet = async () => {
 export const getCurrentWalletConnected = async () => {
   let address = "";
   let status = false;
-  if (provider === undefined) {
-    if (web3Modal.cachedProvider.trim().length !== 0) {
-      await initialize();
+  try {
+    if (provider === undefined) {
+      if (web3Modal.cachedProvider.trim().length !== 0) {
+        await initialize();
+        address = accounts[0];
+        status = true;
+      } else {
+        address = "";
+      }
+    } else {
       address = accounts[0];
       status = true;
-    } else {
-      address = "";
     }
-  } else {
-    address = accounts[0];
-    status = true;
+  } catch (error) {
+    console.log(error);
   }
   return { address, chainId, status };
 };
@@ -87,33 +99,32 @@ export const requestSwitchNetwork = async (chainId) => {
 
 export const getSaleStatus = async () => {
   let isPaused = undefined;
-  let pre_price = undefined;
-  let presale = undefined;
-  let public_price = undefined;
-  let publicsale = undefined;
+  let preSalePrice = undefined;
+  let preSale = undefined;
+  let publicSalePrice = undefined;
+  let publicSale = undefined;
   let status = false;
   let message = "Please connect wallet";
   let saleStage = SALE_NONE;
   let price = 0;
-
   if (provider === undefined && web3Modal.cachedProvider.trim().length === 0) {
     web3 = createAlchemyWeb3(ALCHEMY_WS_URL);
     let _contract = new web3.eth.Contract(contractABI, contractAddress);
     isPaused = await _contract.methods.isPaused().call();
-    pre_price = await _contract.methods.pre_price().call();
-    presale = await _contract.methods.presale().call();
-    public_price = await _contract.methods.public_price().call();
-    publicsale = await _contract.methods.publicsale().call();
+    preSalePrice = await _contract.methods.preSalePrice().call();
+    preSale = await _contract.methods.preSale().call();
+    publicSalePrice = await _contract.methods.publicSalePrice().call();
+    publicSale = await _contract.methods.publicSale().call();
   }
   if (provider === undefined && web3Modal.cachedProvider.trim().length !== 0) {
     await initialize();
   }
   if (contract !== undefined) {
     isPaused = await contract.methods.isPaused().call();
-    pre_price = await contract.methods.pre_price().call();
-    presale = await contract.methods.presale().call();
-    public_price = await contract.methods.public_price().call();
-    publicsale = await contract.methods.publicsale().call();
+    preSalePrice = await contract.methods.preSalePrice().call();
+    preSale = await contract.methods.preSale().call();
+    publicSalePrice = await contract.methods.publicSalePrice().call();
+    publicSale = await contract.methods.publicSale().call();
     status = true;
   }
   if (isPaused === true) {
@@ -121,13 +132,13 @@ export const getSaleStatus = async () => {
     price = 0;
     message = "The sale is finished!";
   } else {
-    if (presale === true) {
+    if (preSale === true) {
       saleStage = SALE_PRESALE;
-      price = pre_price;
+      price = preSalePrice;
       message = "The presale is open now!";
-    } else if (publicsale === true) {
+    } else if (publicSale === true) {
       saleStage = SALE_PUBLICSALE;
-      price = public_price;
+      price = publicSalePrice;
       message = "The public sale is open now!";
     } else {
       saleStage = SALE_NONE;
@@ -189,9 +200,9 @@ export const checkIfBlackList = async () => {
     await initialize();
   }
   if (contract !== undefined) {
-    isBlackList = await contract.methods.isBlackList(accounts[0]).call();
+    isBlackList = await contract.methods.blacklistuser(accounts[0]).call();
     status = true;
-    message = `The Address ${accounts[0]} already minted at presale. You can buy at public sale or Opensea.io !`;
+    message = `The Address ${accounts[0]} already minted at preSale. You can buy at public sale or Opensea.io !`;
   }
   return { isBlackList, status, message };
 };

@@ -1,26 +1,26 @@
 export const PAGE_LINKS = [
   {
-    text: "🏠Home",
+    text: "Home",
     link: "/",
   },
   {
-    text: "⛏️Mint",
+    text: "Mint",
     link: "/mint",
   },
   {
-    text: "⚔️Arena",
+    text: "Arena",
     link: "/arena",
   },
   {
-    text: "🖼️Gallery",
+    text: "Gallery",
     link: "/gallery",
   },
   {
-    text: "📢Updates",
+    text: "Updates",
     link: "/updates",
   },
   {
-    text: "👑About US",
+    text: "About US",
     link: "/about",
   },
 ];
@@ -57,7 +57,8 @@ export const ALCHEMY_URL =
 export const ALCHEMY_WS_URL =
   "wss://eth-rinkeby.ws.alchemyapi.io/ws/GVk1Bj0Az_4igUYW8syP7APSSJwI6GeP";
 
-export const contractAddress = "0x0922Cf6a626A35f1D403338cf58e35ff3eB249A0";
+// export const contractAddress = "0x0922Cf6a626A35f1D403338cf58e35ff3eB249A0"; //old
+export const contractAddress = "0x7376771C144EB3c9d3aD2ffEFb1d7DE83751eE57";
 
 export const SALE_NONE = "SALE_NONE";
 export const SALE_PRESALE = "SALE_PRESALE";

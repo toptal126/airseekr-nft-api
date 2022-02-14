@@ -17,6 +17,7 @@ import {
 } from "../../config/contants";
 
 import { useStore } from "../../utils/store";
+
 import { ReactComponent as LoadingGear } from "../../assets/icon/LoadingGear.svg";
 import { ReactComponent as LoadingDNA } from "../../assets/icon/LoadingDNA.svg";
 import { ReactComponent as BounceCheck } from "../../assets/icon/BounceCheck.svg";
@@ -42,12 +43,12 @@ const Mint = () => {
         setWeb3Util(data);
       });
     }
-    if (saleStatus.status === false)
+    if (saleStatus.status === false) {
       getSaleStatus().then((data) => {
         setSaleStatus(data);
         setLoading(false);
       });
-    else {
+    } else {
       setLoading(false);
     }
   }, []);
