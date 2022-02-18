@@ -11,6 +11,7 @@
     "@testing-library/react": "^12.1.2",
     "@testing-library/user-event": "^13.5.0",
     "@walletconnect/web3-provider": "^1.7.1",
+    "axios": "^0.26.0",
     "dotenv": "^16.0.0",
     "react": "^17.0.2",
     "react-app-rewired": "^2.1.11",

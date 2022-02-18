@@ -138,6 +138,13 @@
     @apply hover:bg-opacity-60 duration-300;
   }
 
+  .arena-nav {
+    @apply flex flex-row lg:flex-col;
+  }
+  .arena-nav-item {
+    @apply w-full lg:w-48 h-48 bg-gray-400 dark:bg-black dark:bg-gray-800 dark:lg:bg-white lg:bg-opacity-20 dark:lg:bg-opacity-20 dark:hover:bg-opacity-70 dark:hover:lg:bg-opacity-70 text-black dark:text-white leading-[3rem] lg:leading-[unset] uppercase duration-200 flex justify-center flex-row text-2xl lg:text-base;
+  }
+
   .animate-banner {
     animation: bounce 2s infinite;
     @apply w-9/12 lg:w-full mx-auto;

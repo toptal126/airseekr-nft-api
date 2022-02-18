@@ -2,10 +2,12 @@ require("dotenv").config();
 const express = require("express");
 const serveStatic = require("serve-static");
 const bodyParser = require("body-parser");
+const cors = require("cors");
 const fs = require("fs");
 const path = require("path");
 const app = express();
 
+app.use(cors());
 //here we are configuring dist to serve app files
 app.use("/", serveStatic(path.join(__dirname, "/client/build")));
 

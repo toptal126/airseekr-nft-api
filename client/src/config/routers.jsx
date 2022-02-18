@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, Navigate } from "react-router-dom";
 
 import Expenses from "../routes/expenses";
 import Invoices from "../routes/invoices";
@@ -7,15 +7,25 @@ import Home from "../pages/Home";
 import Mint from "../pages/Mint";
 import Arena from "../pages/Arena";
 import Gallery from "../pages/Gallery";
+import Doa from "../pages/Arena/Doa";
+import Leaderboard from "../pages/Arena/Leaderboard";
+import Dashboard from "../pages/Arena/Dashboard";
+import Records from "../pages/Arena/Records";
 
 const Routers = (props) => {
   return (
     /* <Alert /> */
     <Routes>
-      <Route exact path="/" element={<Home />}></Route>
-      <Route exact path="/mint" element={<Mint />}></Route>
-      <Route path="/arena" element={<Arena />}></Route>
-      <Route path="/gallery" element={<Gallery />}></Route>
+      <Route index element={<Home />}></Route>
+      <Route exact path="mint" element={<Mint />}></Route>
+      <Route path="arena" element={<Arena />}>
+        <Route path="dashboard" element={<Dashboard />} />
+        <Route path="doa" element={<Doa />} />
+        <Route path="leaderboard" element={<Leaderboard />} />
+        <Route path="records" element={<Records />} />
+        <Route index element={<Navigate replace to="dashboard" />} />
+      </Route>
+      <Route path="gallery" element={<Gallery />}></Route>
       {/* <Route path="invoices" element={<Invoices />}>
         <Route
           index
