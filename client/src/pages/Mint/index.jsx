@@ -7,6 +7,8 @@ import {
   checkIfBlackList,
 } from "../../utils/interactWeb3";
 
+import { useStore } from "../../utils/store";
+
 import {
   //   SALE_NONE,
   SALE_PRESALE,
@@ -15,8 +17,6 @@ import {
   MAXIMUM_PRESALE_MINTABLE,
   MAXIMUM_PUBLICSALE_MINTABLE,
 } from "../../config/contants";
-
-import { useStore } from "../../utils/store";
 
 import { ReactComponent as LoadingGear } from "../../assets/icon/LoadingGear.svg";
 import { ReactComponent as LoadingDNA } from "../../assets/icon/LoadingDNA.svg";
